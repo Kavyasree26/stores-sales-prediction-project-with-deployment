@@ -28,21 +28,19 @@ def result():
     X = np.array([[item_weight, item_fat_content, item_visibility, item_type, item_mrp,
                  outlet_establishment_year, outlet_size, outlet_location_type, outlet_type]])
 
-    scaler_path = r'models/sc.sav'
+    scaler_path = r'models\sc.sav'
 
     sc = joblib.load(scaler_path)
 
     X_std = sc.transform(X)
 
-    model_path = r'models/xg.sav'
+    model_path = r'models\xg.sav'
 
     model = joblib.load(model_path)
 
     Y_pred = model.predict(X_std)
-
-    return jsonify({'PREDICTED ITEM OUTLET SALES': float(Y_pred)})
-
+    print(Y_pred)
+    return render_template("home.html",prediction_text=Y_pred)
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
