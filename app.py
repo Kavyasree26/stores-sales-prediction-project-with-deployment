@@ -30,7 +30,7 @@ def result():
                  outlet_establishment_year, outlet_size, outlet_location_type, outlet_type]])
 
     prediction = model.predict(X)
-    return render_template("home.html",prediction_text=prediction)
+    return render_template("home.html",prediction_text = "The future sales is {}".format(prediction))
 
 if __name__ == "__main__":
     app.run(debug=True)
