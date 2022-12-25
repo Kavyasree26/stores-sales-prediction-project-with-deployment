@@ -5,7 +5,9 @@ import numpy as np
 import pickle
 app = Flask(__name__)
 
-model =joblib.load(r'models/xg.sav')
+model_path = r'models/xg.sav'
+
+model =joblib.load(model_path )
 @app.route("/")
 def index():
     return render_template("home.html")
